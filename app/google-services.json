@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300493595749",
+    "project_id": "water-diary-83850",
+    "storage_bucket": "water-diary-83850.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300493595749:android:3ce7f3a159a50d7fe7d28c",
+        "android_client_info": {
+          "package_name": "rpt.tool.waterdiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMRKBgl6nKLRTieQGtMFZVwmbuGsbueYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
