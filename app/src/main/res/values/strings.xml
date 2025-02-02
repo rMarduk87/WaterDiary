@@ -556,5 +556,10 @@
     <string name="_4500_ml">4500 ml</string>
     <string name="mail">rptechnlogies.info@gmail.com</string>
     <string name="choose_your_client">Choose your client:</string>
+    <string name="blood_donor">Blood Donor</string>
+    <string name="str_reached">Reached\nGoal</string>
+    <string name="str_no_reached_goal_found">No Reached Goal found!!</string>
+    <string name="str_container_report">Container Report</string>
+    <string name="male">Male</string>
 
 </resources>

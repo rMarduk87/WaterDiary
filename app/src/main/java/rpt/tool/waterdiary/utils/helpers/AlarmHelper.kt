@@ -111,7 +111,7 @@ internal class AlarmHelper
                                 alarmSubDetailsList[j].alarmTime.trim()
                             )).toInt()
 
-                    val updateTime = Calendar.getInstance(Locale.US)
+                    val updateTime = Calendar.getInstance(Locale.getDefault())
                     updateTime[Calendar.HOUR_OF_DAY] = hourOfDay
                     updateTime[Calendar.MINUTE] = minute
                     updateTime[Calendar.SECOND] = 0

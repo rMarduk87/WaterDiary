@@ -33,7 +33,7 @@ class DateHelper : BaseActivity() {
 
     val millisecond: Long
         get() {
-            val cal = Calendar.getInstance(Locale.US)
+            val cal = Calendar.getInstance(Locale.getDefault())
             cal[Calendar.HOUR] = 0
             cal[Calendar.MINUTE] = 0
             cal[Calendar.SECOND] = 0
@@ -43,12 +43,12 @@ class DateHelper : BaseActivity() {
 
     val currentGMTMillisecond: Long
         get() {
-            val current_cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"), Locale.US)
+            val current_cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"), Locale.getDefault())
             return current_cal.timeInMillis
         }
 
     fun getMillisecond(year: Int, month: Int, day: Int): Long {
-        val cal = Calendar.getInstance(Locale.US)
+        val cal = Calendar.getInstance(Locale.getDefault())
         cal[Calendar.YEAR] = year
         cal[Calendar.MONTH] = month
         cal[Calendar.DAY_OF_MONTH] = day
@@ -60,7 +60,7 @@ class DateHelper : BaseActivity() {
     }
 
     fun getMillisecond(year: Int, month: Int, day: Int, hour: Int, minute: Int, format: Int): Long {
-        val cal = Calendar.getInstance(Locale.US)
+        val cal = Calendar.getInstance(Locale.getDefault())
         cal[Calendar.YEAR] = year
         cal[Calendar.MONTH] = month
         cal[Calendar.DAY_OF_MONTH] = day
@@ -79,7 +79,7 @@ class DateHelper : BaseActivity() {
         minute: Int,
         format: String
     ): Long {
-        val cal = Calendar.getInstance(Locale.US)
+        val cal = Calendar.getInstance(Locale.getDefault())
         cal[Calendar.YEAR] = year
         cal[Calendar.MONTH] = month
         cal[Calendar.DAY_OF_MONTH] = day
@@ -93,7 +93,7 @@ class DateHelper : BaseActivity() {
     }
 
     fun getMillisecond(year: Int, month: Int, day: Int, hour: Int, minute: Int): Long {
-        val cal = Calendar.getInstance(Locale.US)
+        val cal = Calendar.getInstance(Locale.getDefault())
         cal[Calendar.YEAR] = year
         cal[Calendar.MONTH] = month
         cal[Calendar.DAY_OF_MONTH] = day
@@ -105,7 +105,7 @@ class DateHelper : BaseActivity() {
 
     val currentMillisecond: Long
         get() {
-            val cal = Calendar.getInstance(Locale.US)
+            val cal = Calendar.getInstance(Locale.getDefault())
             return cal.timeInMillis
         }
 
@@ -244,21 +244,21 @@ class DateHelper : BaseActivity() {
 
     fun getFormatDate(format: String?): String {
         //SimpleDateFormat dateFormat = new SimpleDateFormat(format, Locale.getDefault());
-        val dateFormat = SimpleDateFormat(format, Locale.US)
+        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
         val date = Date()
         return dateFormat.format(date)
     }
 
     fun getCurrentDate(format: String?): String {
-        val dateFormat = SimpleDateFormat(format, Locale.US)
+        val dateFormat = SimpleDateFormat(format, Locale.getDefault())
         val date = Date()
         return dateFormat.format(date)
     }
 
     fun getCurrentTime(is24TimeFormat: Boolean): String {
         val dateFormat =
-            if (is24TimeFormat) SimpleDateFormat("HH:mm", Locale.US)
-            else SimpleDateFormat("KK:mm a", Locale.US)
+            if (is24TimeFormat) SimpleDateFormat("HH:mm", Locale.getDefault())
+            else SimpleDateFormat("KK:mm a", Locale.getDefault())
 
         val date = Date()
         return dateFormat.format(date)
@@ -312,7 +312,7 @@ class DateHelper : BaseActivity() {
 
         try {
             convertedDate = dateFormat.parse(dateString)!!
-            val c = Calendar.getInstance(Locale.US)
+            val c = Calendar.getInstance(Locale.getDefault())
             val formattedDate = dateFormat.format(c.time)
             serverDate = dateFormat.parse(formattedDate)!!
         } catch (e: Exception) {
@@ -368,7 +368,7 @@ class DateHelper : BaseActivity() {
             val userDate = sdf.parse(curTime)
 
             if (end!!.before(start)) {
-                val mCal = Calendar.getInstance(Locale.US)
+                val mCal = Calendar.getInstance(Locale.getDefault())
                 mCal.time = end
                 mCal.add(Calendar.DAY_OF_YEAR, 1)
                 end.time = mCal.timeInMillis
@@ -403,7 +403,7 @@ class DateHelper : BaseActivity() {
             val userDate = my_date?.let { sdf.parse(it) }
 
             if (end!!.before(start)) {
-                val mCal = Calendar.getInstance(Locale.US)
+                val mCal = Calendar.getInstance(Locale.getDefault())
                 mCal.time = end
                 mCal.add(Calendar.DAY_OF_YEAR, 1)
                 end.time = mCal.timeInMillis
@@ -424,7 +424,7 @@ class DateHelper : BaseActivity() {
     @SuppressLint("SimpleDateFormat")
     fun getGMTDate(dateFormat: String?): String {
         val formatter = SimpleDateFormat(dateFormat)
-        val cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"), Locale.US)
+        val cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"), Locale.getDefault())
         formatter.timeZone = TimeZone.getTimeZone("GMT")
 
         return formatter.format(cal.time)
@@ -530,7 +530,7 @@ class DateHelper : BaseActivity() {
         val formatter = SimpleDateFormat(dateFormat)
 
         // Create a calendar object that will convert the date and time value in milliseconds to date.
-        val calendar = Calendar.getInstance(Locale.US)
+        val calendar = Calendar.getInstance(Locale.getDefault())
         calendar.timeInMillis = milliSeconds
         return formatter.format(calendar.time)
     }
@@ -539,7 +539,7 @@ class DateHelper : BaseActivity() {
 
     @SuppressLint("SimpleDateFormat")
     fun getLastDateOfMonth(month: Int, year: Int, format: String?): String {
-        val calendar = Calendar.getInstance(Locale.US)
+        val calendar = Calendar.getInstance(Locale.getDefault())
         // passing month-1 because 0-->jan, 1-->feb... 11-->dec
         calendar[year, month - 1] = 1
         calendar[Calendar.DATE] = calendar.getActualMaximum(Calendar.DATE)
@@ -556,8 +556,8 @@ class DateHelper : BaseActivity() {
         var parsed: Date? = null
         var outputDate = ""
 
-        val df_input = SimpleDateFormat(inputFormat, Locale.US)
-        val df_output = SimpleDateFormat(outputFormat, Locale.US)
+        val df_input = SimpleDateFormat(inputFormat, Locale.getDefault())
+        val df_output = SimpleDateFormat(outputFormat, Locale.getDefault())
 
         try {
             parsed = inputDate?.let { df_input.parse(it) }

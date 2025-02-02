@@ -109,7 +109,7 @@ class UserInfoSixFragment :
     }
 
     private fun isNextDayEnd(): Boolean {
-        val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("hh:mm a", Locale.US)
+        val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
 
         var date1: Date? = null
         var date2: Date? = null
@@ -130,8 +130,8 @@ class UserInfoSixFragment :
         val onTimeSetListener: TimePickerDialog.OnTimeSetListener =
             TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute, second ->
                 var formatedDate = ""
-                val sdf = SimpleDateFormat("HH:mm:ss", Locale.US)
-                val sdfs = SimpleDateFormat("hh:mm a", Locale.US)
+                val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+                val sdfs = SimpleDateFormat("hh:mm a", Locale.getDefault())
                 val dt: Date
                 var time = ""
 
@@ -156,7 +156,7 @@ class UserInfoSixFragment :
                 }
             }
 
-        val now = Calendar.getInstance(Locale.US)
+        val now = Calendar.getInstance(Locale.getDefault())
 
         if (isFrom) {
             now[Calendar.HOUR_OF_DAY] = from_hour

@@ -14,7 +14,7 @@ class BackupReceiver : android.content.BroadcastReceiver() {
 
             if (SharedPreferencesManager.autoBackUp) {
                 val _id = System.currentTimeMillis().toInt()
-                val auto_backup_time = java.util.Calendar.getInstance(java.util.Locale.US)
+                val auto_backup_time = java.util.Calendar.getInstance(java.util.locale.getDefault())
                 auto_backup_time[java.util.Calendar.HOUR_OF_DAY] = 1
                 auto_backup_time[java.util.Calendar.MINUTE] = 0
                 auto_backup_time[java.util.Calendar.SECOND] = 0

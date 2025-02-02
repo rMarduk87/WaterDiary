@@ -82,6 +82,7 @@ class MenuAdapter(
             5 -> R.drawable.ic_privacypolicy
             6 -> R.drawable.ic_menu_share
             7 -> R.drawable.ic_menu_go_premium
+            8 -> R.drawable.ic_menu_report
             else -> R.drawable.ic_menu_drink_water
         }
 

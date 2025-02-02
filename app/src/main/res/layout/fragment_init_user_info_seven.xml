@@ -85,6 +85,53 @@
 
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:ignore="UselessParent">
+
+                    <RelativeLayout
+                        android:id="@+id/blood_donor_block"
+                        android:layout_width="@dimen/dp_80"
+                        android:layout_height="@dimen/dp_80"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/rdo_gender_regular">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/img_blood_donor"
+                                android:layout_width="@dimen/dp_50"
+                                android:layout_height="@dimen/dp_50"
+                                android:contentDescription="@string/img"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/active"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_below="@+id/blood_donor_block"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/blood_donor"
+                        android:textSize="@dimen/dp_12"
+                        android:textColor="@color/rdo_gender_select"
+                        android:fontFamily="@font/calibri_light"
+                        tools:ignore="SpUsage" />
+
+                </RelativeLayout>
+
             </LinearLayout>
 
 

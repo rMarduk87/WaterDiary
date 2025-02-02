@@ -11,7 +11,7 @@ import java.util.Locale
 object MyAlarmManager {
     fun scheduleAutoRecurringAlarm(context: Context, updateTime2: Calendar, _id: Int) // for auto
     {
-        val updateTime = Calendar.getInstance(Locale.US)
+        val updateTime = Calendar.getInstance(Locale.getDefault())
         updateTime.timeInMillis = updateTime2.timeInMillis
 
         if (updateTime.timeInMillis < System.currentTimeMillis()) {
@@ -46,7 +46,7 @@ object MyAlarmManager {
         minute: Int,
         _id: Int
     ) {
-        val calendar = Calendar.getInstance(Locale.US)
+        val calendar = Calendar.getInstance(Locale.getDefault())
         calendar[Calendar.HOUR_OF_DAY] = hour
         calendar[Calendar.MINUTE] = minute
         calendar[Calendar.SECOND] = 0
@@ -107,7 +107,7 @@ object MyAlarmManager {
         autoBackupType: Int
     ) // for auto backup
     {
-        val updateTime = Calendar.getInstance(Locale.US)
+        val updateTime = Calendar.getInstance(Locale.getDefault())
         updateTime.timeInMillis = updateTime2.timeInMillis
         if (updateTime.timeInMillis < System.currentTimeMillis()) {
             updateTime.add(Calendar.DATE, 1)

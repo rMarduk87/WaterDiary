@@ -57,6 +57,10 @@ class DatabaseHelper
         fire(query)
     }
 
+    private fun fire(query: String) {
+        AppUtils.SDB!!.execSQL(query)
+    }
+
     fun insert(table_name: String?, fields: HashMap<String?, String?>) {
 
         val initialValues = ContentValues()
@@ -308,16 +312,11 @@ class DatabaseHelper
     }
 
     fun remove(table_name: String) {
-        val query = "DELETE FROM $table_name"
-        fire(query)
+        fire(table_name, null.toString(),null.toString())
     }
 
-    fun remove(table_name: String, where_con: String) {
-        var query = "DELETE FROM $table_name"
-
-        if (!sh.check_blank_data(where_con)) query += " WHERE $where_con"
-
-        fire(query)
+    fun remove(table_name: String, where_con: String,value:String) {
+        fire(table_name,where_con,value)
     }
 
     @SuppressLint("Recycle")
@@ -364,8 +363,8 @@ class DatabaseHelper
         return "0"
     }
 
-    private fun fire(query: String?) {
-        AppUtils.SDB!!.execSQL(query)
+    private fun fire(query: String?, where_con: String, value: String) {
+        AppUtils.SDB!!.delete(query,where_con,arrayOf(value))
     }
 
     fun md5(md5: String): String? {

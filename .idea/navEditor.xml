@@ -8,13 +8,37 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="BackUpRestoreFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-30" />
+                            <option name="y" value="18" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="ContainerReportFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-6" />
+                            <option name="y" value="-517" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="FaqFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-88" />
-                            <option name="y" value="61" />
+                            <option name="x" value="-245" />
+                            <option name="y" value="19" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -25,8 +49,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-243" />
-                            <option name="y" value="322" />
+                            <option name="x" value="-109" />
+                            <option name="y" value="315" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -43,6 +67,16 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_menuFragment_to_backUpRestoreFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_menuFragment_to_containerReportFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_menuFragment_to_faqFragment">
                               <value>
                                 <LayoutPositions />
@@ -54,6 +88,11 @@
                               </value>
                             </entry>
                             <entry key="action_menuFragment_to_profileFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_menuFragment_to_rechedGoalFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -90,13 +129,25 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="ReachedGoalFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="116" />
+                            <option name="y" value="-875" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="ReminderFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="26" />
-                            <option name="y" value="416" />
+                            <option name="x" value="111" />
+                            <option name="y" value="-241" />
                           </Point>
                         </option>
                       </LayoutPositions>

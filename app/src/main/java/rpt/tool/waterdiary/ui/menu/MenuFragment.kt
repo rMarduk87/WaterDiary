@@ -20,6 +20,9 @@ class MenuFragment : NavBaseFragment<FragmentMenuBinding>(FragmentMenuBinding::i
             4-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToFaqFragment())
             5-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToProfileFragment())
             6-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToReminderFragment())
+            7-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToRechedGoalFragment())
+            8-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToContainerReportFragment())
+            9-> safeNavController?.safeNavigate(MenuFragmentDirections.actionMenuFragmentToBackUpRestoreFragment())
         }
     }
 }

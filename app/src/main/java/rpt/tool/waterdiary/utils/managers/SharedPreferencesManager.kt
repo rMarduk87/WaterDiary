@@ -121,4 +121,7 @@ object SharedPreferencesManager {
     var menu: Int
         get() = sharedPreferences.getInt(AppUtils.MENU, 1)
         set(value) = sharedPreferences.edit().putInt(AppUtils.MENU, value).apply()
+    var isBloodDonor: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.IS_BLOOD_DONOR, false)
+        set(value) = sharedPreferences.edit().putBoolean(AppUtils.IS_BLOOD_DONOR, value).apply()
 }

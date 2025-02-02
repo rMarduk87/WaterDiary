@@ -32,7 +32,7 @@ class AlarmReceiver : BroadcastReceiver() {
             val alarms = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarms.setExact(
                 AlarmManager.RTC_WAKEUP,
-                Calendar.getInstance(Locale.US).timeInMillis + 2 * 60000,
+                Calendar.getInstance(Locale.getDefault()).timeInMillis + 2 * 60000,
                 snoozePendingIntent
             )
 

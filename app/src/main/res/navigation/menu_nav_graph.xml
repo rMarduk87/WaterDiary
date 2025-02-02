@@ -28,6 +28,15 @@
         <action
             android:id="@+id/action_menuFragment_to_reminderFragment"
             app:destination="@id/ReminderFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_rechedGoalFragment"
+            app:destination="@id/ReachedGoalFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_containerReportFragment"
+            app:destination="@id/ContainerReportFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_backUpRestoreFragment"
+            app:destination="@id/BackUpRestoreFragment" />
     </fragment>
 
     <fragment
@@ -39,32 +48,50 @@
     <fragment
         android:id="@+id/ReportFragment"
         android:name="rpt.tool.waterdiary.ui.userinfo.InitUserInfoFragment"
-        android:label="InitUserInfoFragment"
+        android:label="ReportFragment"
         tools:layout="@layout/fragment_init_user_info">
     </fragment>
     <fragment
         android:id="@+id/SettingsFragment"
-        android:name="rpt.tool.waterdiary.ui.userinfo.InitUserInfoFragment"
-        android:label="InitUserInfoFragment"
-        tools:layout="@layout/fragment_init_user_info">
+        android:name="rpt.tool.waterdiary.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
     </fragment>
     <fragment
         android:id="@+id/FaqFragment"
-        android:name="rpt.tool.waterdiary.ui.userinfo.InitUserInfoFragment"
-        android:label="InitUserInfoFragment"
-        tools:layout="@layout/fragment_init_user_info">
+        android:name="rpt.tool.waterdiary.ui.faq.FaqFragment"
+        android:label="FaqFragment"
+        tools:layout="@layout/fragment_faq">
     </fragment>
     <fragment
         android:id="@+id/ProfileFragment"
         android:name="rpt.tool.waterdiary.ui.userinfo.InitUserInfoFragment"
-        android:label="InitUserInfoFragment"
+        android:label="ProfileFragment"
         tools:layout="@layout/fragment_init_user_info">
     </fragment>
     <fragment
         android:id="@+id/ReminderFragment"
         android:name="rpt.tool.waterdiary.ui.userinfo.InitUserInfoFragment"
-        android:label="InitUserInfoFragment"
+        android:label="ReminderFragment"
         tools:layout="@layout/fragment_init_user_info">
+    </fragment>
+    <fragment
+        android:id="@+id/ReachedGoalFragment"
+        android:name="rpt.tool.waterdiary.ui.reached.ReachedGoalFragment"
+        android:label="ReachedGoalFragment"
+        tools:layout="@layout/fragment_reached_goal">
+    </fragment>
+    <fragment
+        android:id="@+id/ContainerReportFragment"
+        android:name="rpt.tool.waterdiary.ui.report.ContainerReportFragment"
+        android:label="ContainerReportFragment"
+        tools:layout="@layout/fragment_container_report">
+    </fragment>
+    <fragment
+        android:id="@+id/BackUpRestoreFragment"
+        android:name="rpt.tool.waterdiary.ui.report.ContainerReportFragment"
+        android:label="BackUpRestoreFragment"
+        tools:layout="@layout/fragment_container_report">
     </fragment>
 
 </navigation>

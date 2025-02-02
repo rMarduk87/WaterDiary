@@ -20,6 +20,7 @@ class UserInfoSevenFragment : NavBaseFragment<FragmentInitUserInfoSevenBinding>(
         setActive()
         setBreastfeeding()
         setPregnant()
+        setBloodDonor()
 
         binding.activeBlock.setOnClickListener{
             SharedPreferencesManager.isActive = !SharedPreferencesManager.isActive
@@ -35,6 +36,11 @@ class UserInfoSevenFragment : NavBaseFragment<FragmentInitUserInfoSevenBinding>(
         binding.breastfeedingBlock.setOnClickListener {
             SharedPreferencesManager.isBreastfeeding = !SharedPreferencesManager.isBreastfeeding
             setBreastfeeding()
+        }
+
+        binding.bloodDonorBlock.setOnClickListener {
+            SharedPreferencesManager.isBloodDonor = !SharedPreferencesManager.isBloodDonor
+            setBloodDonor()
         }
     }
 
@@ -74,6 +80,19 @@ class UserInfoSevenFragment : NavBaseFragment<FragmentInitUserInfoSevenBinding>(
         } else {
             binding.breastfeedingBlock.background = mContext!!.resources.getDrawable(R.drawable.rdo_gender_regular)
             binding.imgBreastfeeding.setImageResource(R.drawable.breastfeeding)
+        }
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun setBloodDonor() {
+        SharedPreferencesManager.setManuallyGoal = false
+
+        if (SharedPreferencesManager.isBloodDonor) {
+            binding.bloodDonorBlock.background = mContext!!.resources.getDrawable(R.drawable.rdo_gender_select)
+            binding.imgBloodDonor.setImageResource(R.drawable.breastfeeding_selected)
+        } else {
+            binding.bloodDonorBlock.background = mContext!!.resources.getDrawable(R.drawable.rdo_gender_regular)
+            binding.imgBloodDonor.setImageResource(R.drawable.breastfeeding)
         }
     }
 
@@ -143,7 +162,6 @@ class UserInfoSevenFragment : NavBaseFragment<FragmentInitUserInfoSevenBinding>(
                     child.isEnabled = false
                 }
             }
-        } else {
         }
     }
 }

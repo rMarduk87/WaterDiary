@@ -43,6 +43,7 @@ class AppUtils {
         const val REMINDER_SOUND: String = "reminder_sound"
         const val DISABLE_NOTIFICATION: String = "disable_notification"
         const val IS_MANUAL_REMINDER: String = "manual_reminder_active"
+        const val IS_BLOOD_DONOR: String = "blood_donor"
         const val DISABLE_SOUND_WHEN_ADD_WATER: String = "disable_sound_when_add_water"
         const val IGNORE_NEXT_STEP: String = "ignore_next_step"
         val decimalFormat: DecimalFormat = DecimalFormat("#0.00")

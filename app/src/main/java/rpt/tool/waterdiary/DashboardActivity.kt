@@ -22,6 +22,8 @@ import android.text.InputFilter
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.Window
 import android.view.WindowManager
 import android.widget.FrameLayout
@@ -124,6 +126,22 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
 
         setFrame()
 
+        if(SharedPreferencesManager.isBloodDonor &&
+            !dh!!.isExists("tbl_blood_donor_details",
+                "DonorDate='${dth!!.currentDate}'")){
+            binding.calendarDonorBlock.visibility = VISIBLE
+            binding.imgCalendarHelper.visibility = GONE
+        }
+        else if(SharedPreferencesManager.isBloodDonor &&
+            dh!!.isExists("tbl_blood_donor_details",
+                "DonorDate='${dth!!.currentDate}'")){
+            binding.calendarDonorBlock.visibility = VISIBLE
+            binding.imgCalendarHelper.visibility =  VISIBLE
+        }
+        else{
+            binding.calendarDonorBlock.visibility = GONE
+        }
+
         ringtone = RingtoneManager.getRingtone(
             mContext,
             Uri.parse(("android.resource://" + mContext!!.packageName) + "/" + R.raw.fill_water_sound)
@@ -180,7 +198,6 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
             }
         }
     }
-
 
     private fun loadPhoto() {
         if (SharedPreferencesManager.userPhoto?.let { sh!!.check_blank_data(it) } == true) {
@@ -291,6 +308,7 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
         menu_name.add(Menu(sh!!.get_string(R.string.str_faqs), false))
         menu_name.add(Menu(sh!!.get_string(R.string.str_privacy_policy), false))
         menu_name.add(Menu(sh!!.get_string(R.string.str_tell_a_friend), false))
+        menu_name.add(Menu(sh!!.get_string(R.string.str_container_report), false))
 
         menuAdapter = act?.let {
             MenuAdapter(it, menu_name, object : MenuAdapter.CallBack {
@@ -327,6 +345,10 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
                                 .replace("#1", AppUtils.APP_SHARE_URL)
 
                             ih!!.ShareText(getApplicationName(mContext!!), str)
+                        }
+                        8 -> {
+                            intent!!.putExtra("Class",8)
+                            startActivity(intent)
                         }
                     }
                 }
@@ -574,6 +596,12 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.openReachedGoal.setOnClickListener {
+            intent = Intent(act, MenuActivity::class.java)
+            intent!!.putExtra("Class",7)
+            startActivity(intent)
+        }
+
         binding.addWater.setOnClickListener {
             if (containerArrayList.size > 0) {
                 if (!dth!!.getDate(filter_cal!!.timeInMillis, AppUtils.DATE_FORMAT)
@@ -700,7 +728,6 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
         if (AppUtils.WATER_UNIT_VALUE.equals("ml",true)
             && count_drink_after_add_current_water > 8000
         ) {
-            //ah.Show_Alert_Dialog("above 8000");
             if (drink_water >= 8000) showDailyMoreThanTargetDialog()
             else if (AppUtils.DAILY_WATER_VALUE < 
                 (8000 - containerArrayList[selected_pos].containerValue!!.toFloat()))
@@ -708,7 +735,6 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
         } else if (!(AppUtils.WATER_UNIT_VALUE.equals("ml",true))
             && count_drink_after_add_current_water > 270
         ) {
-            //ah.Show_Alert_Dialog("above 270");
             if (drink_water >= 270) showDailyMoreThanTargetDialog()
             else if (AppUtils.DAILY_WATER_VALUE < (270 - containerArrayList[selected_pos]
                 .containerValueOZ!!.toFloat())) showDailyMoreThanTargetDialog()
@@ -721,7 +747,6 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
             btnclick = true
             return
         }
-
 
         if (!SharedPreferencesManager.disableSoundWhenAddWater) {
             ringtone!!.stop()
@@ -852,11 +877,48 @@ class DashboardActivity : MasterBaseAppCompatActivity() {
     private fun callDialog() {
         if (old_drink_water < AppUtils.DAILY_WATER_VALUE) {
             if (drink_water >= AppUtils.DAILY_WATER_VALUE) {
+                addDataToReachedGoal()
                 showDailyGoalReachedDialog()
             }
         }
 
         old_drink_water = drink_water
+    }
+
+    private fun addDataToReachedGoal() {
+        val initialValues = ContentValues()
+
+        val arr_data = dh!!.getdata(
+            "tbl_drink_details",
+            ("DrinkDate ='" + dth!!.getDate(
+                filter_cal!!.timeInMillis,
+                AppUtils.DATE_FORMAT
+            )) + "'"
+        )
+
+        var drink_water = 0f
+        var drink_waterOZ = 0f
+        for (k in arr_data.indices) {
+            drink_water += arr_data[k]["ContainerValue"]!!.toFloat()
+            drink_waterOZ += arr_data[k]["ContainerValueOZ"]!!.toFloat()
+        }
+
+        initialValues.put(
+            "ContainerValue",
+            "" + drink_water
+        )
+        initialValues.put(
+            "ContainerValueOZ",
+            "" + drink_waterOZ
+        )
+        initialValues.put(
+            "DrinkDate",
+            dth!!.formateDateFromString(
+                "dd-MM-yy", "dd-MM-yyyy",
+                dth!!.currentDate
+            )
+        )
+        dh!!.insert("tbl_reached_goal_details", initialValues)
     }
 
     private fun refresh_bottle(isFromCurrentProgress: Boolean, isRegularAnimation: Boolean) {

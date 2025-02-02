@@ -53,9 +53,17 @@ class HistoryFragment : NavBaseFragment<FragmentHistoryBinding>(FragmentHistoryB
                     .setPositiveButton(
                         sh!!.get_string(R.string.str_yes),
                         DialogInterface.OnClickListener { dialog, whichButton ->
-                            dh!!.remove("tbl_drink_details", "id=" + history!!.id)
+                            dh!!.remove("tbl_drink_details", "id=?",
+                                history!!.id.toString())
                             page = 0
                             isLoading = true
+                            if(reachedToRemove(history.drinkDate)){
+                                history.drinkDate?.let {
+                                    dh!!.remove("tbl_reached_goal_details",
+                                        "DrinkDate=?", it
+                                    )
+                                }
+                            }
                             histories.clear()
                             load_history(false)
                             
@@ -109,6 +117,39 @@ class HistoryFragment : NavBaseFragment<FragmentHistoryBinding>(FragmentHistoryB
                 }
             }
         })
+    }
+
+    private fun reachedToRemove(drinkDate: String?): Boolean {
+        val arr_data2: ArrayList<HashMap<String, String>> =
+            dh!!.getdata("tbl_drink_details", "DrinkDate ='$drinkDate'")
+
+        var tot = 0f
+        var today = 0f
+
+        val mes_unit: String = AppUtils.WATER_UNIT_VALUE
+
+        for (j in arr_data2.indices) {
+            tot += if (mes_unit.equals(
+                    "ml",
+                    ignoreCase = true
+                )
+            )
+                arr_data2[j]["ContainerValue"]!!.toFloat()
+            else
+                arr_data2[j]["ContainerValueOZ"]!!.toFloat()
+
+            today = if (mes_unit.equals(
+                    "ml",
+                    ignoreCase = true
+                )
+            )
+                arr_data2[j]["TodayGoal"]!!.toFloat()
+            else
+                arr_data2[j]["TodayGoalOZ"]!!.toFloat()
+
+        }
+
+        return tot < today
     }
 
     private fun finish() {
